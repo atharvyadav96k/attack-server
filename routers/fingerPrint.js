@@ -26,9 +26,9 @@ fpRouter.get('/new', async (req, res)=>{
 
 fpRouter.post('/addMails', async (req, res)=>{
     try{
-        const {email1, email2, email3} = req.body;
+        const {email1, email2, email3, fPrint} = req.body;
         console.log(email1, email2, email3);
-        const fp = await fingerPrint.findOne();
+        const fp = await fingerPrint.findOne({fingerPrint: fPrint});
         fp.alertEmails.push(email1);
         fp.alertEmails.push(email2);
         fp.alertEmails.push(email3);

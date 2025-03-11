@@ -22,8 +22,8 @@ app.use('/alerts', egRouter);
 app.use('/bpm', bpm);
 
 app.get('/', (req, res)=>{
-    res.send("Hello")
-})
-// connect Data Base
+    res.send("Hello");
+});
+
 connectDb();
 app.listen(4000);

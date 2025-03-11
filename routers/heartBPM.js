@@ -35,7 +35,7 @@ bpmRouter.post('/:fPrint', async (req, res) => {
         success: false,
       });
     }
-  });
+});
 
 bpmRouter.get('/:fPrint', async (req, res)=>{
     try{

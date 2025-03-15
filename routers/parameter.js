@@ -1,6 +1,6 @@
 const express = require('express');
 const par = express.Router();
-const FingerPrint = require('../models/fingerprint'); // Import your Mongoose model
+const FingerPrint = require('../modules/watchFingerPrint'); // Import your Mongoose model
 
 par.post('/:fPrint', async (req, res) => {
     try {

@@ -47,6 +47,7 @@ bpmRouter.get('/:fPrint', async (req, res)=>{
             heartBPM : fp.heartBPM,
             fPrint: fPrint,
             param: fp.parameter,
+            email: fp.alertEmails,
             success: true
         });
     }catch(err){

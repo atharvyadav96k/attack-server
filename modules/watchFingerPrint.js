@@ -33,6 +33,10 @@ const fingerPrintSchema = new mongoose.Schema({
             type: Number,
             enum: [0, 1], 
         }
+    },
+    loc: {
+        lat: String,
+        long: String
     }
 });
 

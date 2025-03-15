@@ -5,8 +5,8 @@ const watchFp = require('../modules/watchFingerPrint');
 bpmRouter.post('/:fPrint', async (req, res) => {
     try {
       const { fPrint } = req.params; // Extract fPrint from the route parameter
-      const { bpm } = req.body;     // Extract bpm from the request body
-  
+      const { bpm, lat, long } = req.body;     // Extract bpm from the request body
+      
       console.log(bpm, fPrint);
   
       // Find the document with the given fingerprint
@@ -22,6 +22,8 @@ bpmRouter.post('/:fPrint', async (req, res) => {
   
       // Update the heartBPM field
       fp.heartBPM = bpm;
+      fp.lat = lat;
+      fp.long = long;
       await fp.save();
   
       res.status(200).json({

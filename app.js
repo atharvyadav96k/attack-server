@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 app.use('/fingerPrints', fpRouter);
 app.use('/alerts', egRouter);
 app.use('/bpm', bpm);
-app.use('param', param);
+app.use('/param', param);
 
 app.get('/', (req, res)=>{
     res.send("Hello");

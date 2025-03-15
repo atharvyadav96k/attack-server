@@ -45,6 +45,8 @@ bpmRouter.get('/:fPrint', async (req, res)=>{
         res.status(200).json({
             message: "current heartbeat",
             heartBPM : fp.heartBPM,
+            fPrint: fPrint,
+            param: fp.parameter,
             success: true
         });
     }catch(err){

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const fingerPrint = new mongoose.Schema({
+const fingerPrintSchema = new mongoose.Schema({
     fingerPrint: {
         type: String,
         required: true
@@ -15,50 +15,33 @@ const fingerPrint = new mongoose.Schema({
         required: true
     },
     parameter: {
+        sex: {
+            type: Number,
+            enum: [1, 2],
+            required: true
+        },
+        totalCholesterol: {
+            type: Number,
+            required: true
+        },
         age: {
             type: Number,
             required: true
         },
-        gender: {
-            type: String,
-            enum: ['Male', 'Female', 'Other'],
-            required: true
-        },
-        bloodPressure: {
+        cigarettesPerDay: {
             type: Number,
             required: true
         },
-        cholesterol: {
+        bmi: {
             type: Number,
             required: true
         },
-        bloodSugar: {
+        diabetes: {
             type: Number,
-            required: true
-        },
-        smoking: {
-            type: Boolean,
-            required: true
-        },
-        alcohol: {
-            type: Boolean,
-            required: true
-        },
-        activity: {
-            type: String,
-            enum: ['Low', 'Moderate', 'High'],
-            required: true
-        },
-        diet: {
-            type: String,
-            enum: ['Healthy', 'Average', 'Unhealthy'],
-            required: true
-        },
-        history: {
-            type: Boolean,
+            enum: [0, 1], // 0 for No, 1 for Yes
             required: true
         }
     }
 });
 
-module.exports = mongoose.model('fingerprints', fingerPrint);
+module.exports = mongoose.model('fingerprints', fingerPrintSchema);

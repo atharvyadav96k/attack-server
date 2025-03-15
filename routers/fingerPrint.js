@@ -45,6 +45,7 @@ fpRouter.post('/addMails', async (req, res) => {
             success: true
         });
     } catch (err) {
+        console.log(err.message)
         return res.status(500).json({
             message: "There is a problem while updating mails",
             success: false

@@ -24,24 +24,31 @@ fpRouter.get('/new', async (req, res)=>{
     }
 });
 
-fpRouter.post('/addMails', async (req, res)=>{
-    try{
-        const {email1, email2, email3, fPrint} = req.body;
+fpRouter.post('/addMails', async (req, res) => {
+    try {
+        const { email1, email2, email3, fPrint } = req.body;
         console.log(email1, email2, email3);
-        const fp = await fingerPrint.findOne({fingerPrint: fPrint});
-        fp.alertEmails.push(email1);
-        fp.alertEmails.push(email2);
-        fp.alertEmails.push(email3);
+        
+        const fp = await fingerPrint.findOne({ fingerPrint: fPrint });
+        if (!fp) {
+            return res.status(404).json({
+                message: "Fingerprint not found",
+                success: false
+            });
+        }
+        
+        fp.alertEmails = [email1, email2, email3];
+        
         await fp.save();
         return res.status(200).json({
-            message: "Mails added successfully",
+            message: "Mails updated successfully",
             success: true
         });
-    }catch(err){
+    } catch (err) {
         return res.status(500).json({
-            message: "There is problem while adding mails",
+            message: "There is a problem while updating mails",
             success: false
-        })
+        });
     }
 });
 module.exports = fpRouter;

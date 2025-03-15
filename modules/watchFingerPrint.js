@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const fingerPrintSchema = new mongoose.Schema({
     fingerPrint: {
-        type: String,
-        required: true
+        type: String
     },
     alertEmails: [
         {
@@ -12,7 +11,6 @@ const fingerPrintSchema = new mongoose.Schema({
     ],
     heartBPM: {
         type: Number,
-        required: true
     },
     parameter: {
         sex: {

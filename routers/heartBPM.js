@@ -22,8 +22,10 @@ bpmRouter.post('/:fPrint', async (req, res) => {
   
       // Update the heartBPM field
       fp.heartBPM = bpm;
-      fp.lat = lat;
-      fp.long = long;
+      fp.loc = {
+        lat,
+        long
+      }
       await fp.save();
   
       res.status(200).json({

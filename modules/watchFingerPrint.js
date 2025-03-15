@@ -15,7 +15,7 @@ const fingerPrintSchema = new mongoose.Schema({
     parameter: {
         sex: {
             type: Number,
-            enum: [1, 2],
+            enum: [0, 1],
         },
         totalCholesterol: {
             type: Number,

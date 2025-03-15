@@ -26,5 +26,6 @@ app.get('/', (req, res)=>{
     res.send("Hello");
 });
 
-// connectDb();
+// connectDb();y
+
 app.listen(4000);

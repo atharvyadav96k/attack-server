@@ -44,5 +44,4 @@ fpRouter.post('/addMails', async (req, res)=>{
         })
     }
 });
-
 module.exports = fpRouter;

@@ -41,7 +41,7 @@ bpmRouter.get('/:fPrint', async (req, res)=>{
     try{
         const {fPrint} = req.params;
         console.log(fPrint)
-        const fp = await watchFp.findOne({fingerPrint: fPrint}).select("-alertEmails");
+        const fp = await watchFp.findOne({fingerPrint: fPrint});
         res.status(200).json({
             message: "current heartbeat",
             heartBPM : fp.heartBPM,

@@ -19,7 +19,7 @@ fpRouter.get('/new', async (req, res)=>{
         console.log(err.message)
         return res.status(500).json({
             success: false,
-            message: "Failed to create finger print"
+            message: "Failed to create finger print "+err.message
         })
     }
 });

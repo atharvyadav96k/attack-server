@@ -64,7 +64,9 @@ import requests
 url = "https://www.tejasswami.shop/bpm/1737205139712"
 
 data = {
-    "bpm": 80
+    "bpm": 80,
+    "lat": 19.0760,
+    "long": 72.8777
 }
 
 try:
@@ -86,8 +88,6 @@ url = "https://www.tejasswami.shop/alerts/alert"
 
 data = {
     "fPrint": "1737205139712",
-    "lat": 19.0760,
-    "long": 72.8777
 }
 
 try:

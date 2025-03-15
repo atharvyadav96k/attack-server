@@ -6,15 +6,16 @@ const sendMail = require('../services/mail.service');
 
 egRouter.post('/alert', async (req, res)=>{
     try{
-        const {fPrint, lat, long} = req.body;
+        const {fPrint} = req.body;
+        const fingerDetails = await fingerPrint.findOne({fingerPrint: fPrint});
+        console.log(fingerDetails)
         // Create HyperLink
-        const link = `<a href="${generateGoogleMapsLink(lat, long)}">See location in Map</a>`
+        const link = `<a href="${generateGoogleMapsLink(fingerDetails.loc.lat, fingerDetails.loc.long)}">See location in Map</a>`
         // get local address
-        let response = await getAddressFromCoordinates(lat, long);
+        let response = await getAddressFromCoordinates(fingerDetails.loc.lat, fingerDetails.loc.long);
         // message to send
         response += `<h1>Your relative is in <b>Emergency</b></h1><p>Address: ${response}</p><br>${link}`;
 
-        const fingerDetails = await fingerPrint.findOne({fingerPrint: fPrint});
         fingerDetails.alertEmails.forEach((email)=>{
             sendMail(email, response);
         })

@@ -100,3 +100,25 @@ except requests.exceptions.RequestException as e:
     print("Error:", e)
 
 ```
+
+# Cardio Send alert for user
+
+```
+import requests
+
+url = "https://www.tejasswami.shop/alerts/alert"
+
+data = {
+    "fPrint": "1737205139712",
+}
+
+try:
+    response = requests.post(url, json=data)
+    response.raise_for_status()
+
+    print("Response:", response.json()) 
+
+except requests.exceptions.RequestException as e:
+    print("Error:", e)
+
+```

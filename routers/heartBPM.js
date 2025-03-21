@@ -60,5 +60,5 @@ bpmRouter.get('/:fPrint', async (req, res)=>{
             success: false
         })
     }
-})
+});
 module.exports = bpmRouter;

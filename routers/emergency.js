@@ -4,10 +4,12 @@ const fingerPrint = require('../modules/watchFingerPrint');
 const {getAddressFromCoordinates, generateGoogleMapsLink} = require('../services/location.service');
 const sendMail = require('../services/mail.service');
 
+// Email validation function
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
+
 egRouter.post('/alert', async (req, res) => {
     try {
         const { fPrint } = req.body;
@@ -38,10 +40,9 @@ egRouter.post('/alert', async (req, res) => {
             return res.status(500).json({ message: "Invalid email list", success: false });
         }
 
-        // Send emails
-        fingerDetails.alertEmails.forEach((email) => {
-            sendMail(email, response);
-        });
+        // Filter valid emails and send alerts
+        const validEmails = fingerDetails.alertEmails.filter(isValidEmail);
+        validEmails.forEach((email) => sendMail(email, response));
 
         return res.status(200).json({
             message: "Alert Successful",
@@ -56,6 +57,7 @@ egRouter.post('/alert', async (req, res) => {
         });
     }
 });
+
 
 egRouter.post('/cardio', async (req, res) => {
     try {

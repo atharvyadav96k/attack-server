@@ -19,13 +19,11 @@ egRouter.post('/alert', async (req, res) => {
         }
 
         const fingerDetails = await fingerPrint.findOne({ fingerPrint: fPrint });
+        console.log(fingerDetails)
         if (!fingerDetails) {
             return res.status(404).json({ message: "Fingerprint not found", success: false });
         }
 
-        if (!fingerDetails.loc || typeof fingerDetails.loc.lat !== 'number' || typeof fingerDetails.loc.long !== 'number') {
-            return res.status(500).json({ message: "Invalid location data", success: false });
-        }
 
         // Create HyperLink
         const link = `<a href="${generateGoogleMapsLink(fingerDetails.loc.lat, fingerDetails.loc.long)}">See location in Map</a>`;
